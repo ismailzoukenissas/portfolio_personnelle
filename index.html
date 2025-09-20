@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - ZOUKENI ISMAIL </title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --dark-color: #0a0a0a;         /* Noir profond */
+      --darker-color: #050505;       /* Noir plus foncé */
+      --neon-green: #00ff9d;        /* Vert néon */
+      --light-green: #00d084;        /* Vert plus doux */
+      --light-color: #f0f0f0;        /* Blanc doux */
+      --section-padding: 80px 0;
+    }
+    
+    body {
+      background-color: var(--dark-color);
+      color: var(--light-color);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: var(--darker-color);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--neon-green);
+      border-radius: 10px;
+    }
+    
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    
+    .text-neon {
+      color: var(--neon-green);
+    }
+    
+    .mono-font {
+      font-family: 'Roboto Mono', monospace;
+    }
+    
+    /* Navbar */
+    .navbar {
+      background-color: rgba(10, 10, 10, 0.95) !important;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 255, 157, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .navbar.scrolled {
+      padding: 10px 0;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--light-color) !important;
+    }
+    
+    .navbar-brand span {
+      color: var(--neon-green);
+    }
+    
+    .nav-link {
+      position: relative;
+      margin: 0 8px;
+      font-weight: 500;
+      color: var(--light-color) !important;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--neon-green);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      color: var(--neon-green) !important;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .nav-link.active {
+      color: var(--neon-green) !important;
+      font-weight: 600;
+    }
+    
+    .nav-link.active::after {
+      width: 100%;
+    }
+    
+    /* Hero Section */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(0, 255, 157, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 80% 70%, rgba(10, 10, 10, 0.1) 0%, transparent 20%);
+      z-index: -1;
+      animation: pulse 15s infinite alternate;
+    }
+    
+    @keyframes pulse {
+      0% { opacity: 0.8; }
+      100% { opacity: 1; }
+    }
+    
+    .profile-img {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 50%;
+      border: 3px solid var(--neon-green);
+      box-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
+      transition: all 0.5s ease;
+    }
+    
+    .profile-img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 30px rgba(0, 255, 157, 0.5);
+    }
+    
+    /* Buttons */
+    .btn-custom {
+      padding: 10px 25px;
+      border-radius: 4px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border: none;
+    }
+    
+    .btn-primary-custom {
+      background-color: var(--neon-green);
+      color: var(--dark-color);
+    }
+    
+    .btn-outline-custom {
+      background-color: transparent;
+      color: var(--neon-green);
+      border: 2px solid var(--neon-green);
+    }
+    
+    .btn-primary-custom:hover {
+      background-color: var(--light-green);
+      color: var(--dark-color);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 255, 157, 0.4);
+    }
+    
+    .btn-outline-custom:hover {
+      background-color: rgba(0, 255, 157, 0.1);
+      color: var(--neon-green);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 255, 157, 0.2);
+    }
+    
+    /* Social Icons */
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0, 255, 157, 0.1);
+      color: var(--light-color);
+      font-size: 1.2rem;
+      margin: 0 8px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 255, 157, 0.2);
+    }
+    
+    .social-icons a:hover {
+      background: rgba(0, 255, 157, 0.2);
+      color: var(--neon-green);
+      transform: translateY(-3px);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--darker-color);
+      padding: 50px 0 20px;
+      border-top: 1px solid rgba(0, 255, 157, 0.1);
+    }
+    
+    .copyright {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+      margin-top: 30px;
+    }
+    
+    /* Animations */
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .float {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 991px) {
+      .hero-section {
+        text-align: center;
+      }
+      
+      .profile-img {
+        margin-bottom: 40px;
+        max-width: 280px;
+      }
+    }
+    
+    @media (max-width: 767px) {
+      .display-3 {
+        font-size: 2.2rem;
+      }
+    }
+    
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <span class="mono-font">&lt;</span>ZOUKENI<span class="mono-font">/&gt;</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="index.html"><i class="bi bi-house-door-fill me-2"></i>Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="apropos.html"><i class="bi bi-person-fill me-2"></i>À propos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="projet.html"><i class="bi bi-code-slash me-2"></i>Projets</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="competences.html"><i class="bi bi-tools me-2"></i>Compétences</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html"><i class="bi bi-envelope-fill me-2"></i>Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero-section">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Image à gauche -->
+      <div class="col-lg-6 mb-5 mb-lg-0 fade-in">
+        <div class="text-center">
+          <img src="1.jpg" alt="ZOUKENI ISMAIL - Développeur Full Stack" class="img-fluid profile-img">
+        </div>
+      </div>
+
+      <!-- Infos à droite -->
+      <div class="col-lg-6 text-center text-lg-start">
+        <h4 class="text-neon mono-font mb-3 fade-in" style="animation-delay: 0.2s;">Bonjour, je m'appelle</h4>
+        <h1 class="display-3 fw-bold mb-3 fade-in" style="animation-delay: 0.4s;">
+          <span class="mono-font text-neon">&lt;</span>
+          ZOUKENI ISMAIL
+          <span class="mono-font text-neon">/&gt;</span>
+        </h1>
+        <h2 class="h3 mb-4 float" style="animation-delay: 0.6s;">
+          Je suis <span class="text-neon"> Étudiant en cycle d’ingénierie à l’Académie Internationale</span>
+        </h2>
+        <p class="mb-4 fade-in" style="animation-delay: 0.8s;">
+         je me prépare à devenir ingénieur en informatique. Passionné par les technologies du web, le développement logiciel et les systèmes informatiques, je développe continuellement mes compétences à travers des projets académiques et personnels. Curieux, rigoureux et motivé, je suis toujours prêt à relever de nouveaux défis pour innover et apprendre.
+
+
+        </p>
+        <div class="d-flex justify-content-center justify-content-lg-start gap-3 fade-in" style="animation-delay: 1s;">
+          <a href="contact.html" class="btn btn-primary-custom btn-custom">
+            <i class="bi bi-envelope me-2"></i>Me contacter
+          </a>
+          <a href="projet.html" class="btn btn-outline-custom btn-custom">
+            <i class="bi bi-collection me-2"></i>Mes projets
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container text-center">
+    <div class="social-icons mb-4">
+      <a href="https://github.com/ismailzoukenissas" class="mx-2" title="GitHub"><i class="bi bi-github"></i></a>
+      <a href="https://www.linkedin.com/in/ismail-zoukeni-22b82832a/" class="mx-2" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      
+      <a href="https://www.instagram.com/ismailzoukeni/" class="mx-2" title="Instagram"><i class="bi bi-instagram"></i></a>
+    </div>
+    <div>
+      <p class="mb-3">Étudiant en Ingénierie Informatique en AIAC</p>
+      <p class="copyright mb-0">
+        &copy; <span id="current-year"></span> ZOUKENI ISMAIL. Tous droits réservés.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // Navbar scroll effect
+  window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+  
+  // Current year for footer
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+  
+  // Simple fade-in animation for elements
+  const fadeElements = document.querySelectorAll('.fade-in');
+  
+  const fadeInObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  fadeElements.forEach(el => {
+    el.style.opacity = 0;
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    fadeInObserver.observe(el);
+  });
+</script>
+</body>
+</html>
