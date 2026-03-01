@@ -1,0 +1,120 @@
+/* assets/css/index.css */
+
+.hero-section{
+  position: relative;
+  padding-top: 120px;
+  padding-bottom: 70px;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-bg{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity: .9;
+  background:
+    radial-gradient(900px 420px at 20% 35%, rgba(0,255,136,.16), transparent 60%),
+    radial-gradient(700px 380px at 80% 30%, rgba(110,150,255,.14), transparent 60%);
+}
+
+/* Carte légère derrière ton texte */
+.hero-card{
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(0,255,136,.12);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+/* Photo ronde + cadre néon */
+.profile-img{
+  width: 320px;
+  height: 320px;
+  object-fit: cover;          /* important pour éviter la déformation */
+  border-radius: 50%;         /* ✅ cercle */
+  border: 3px solid rgba(0,255,136,.45);
+  box-shadow:
+    0 0 0 10px rgba(0,255,136,.08),
+    0 30px 70px rgba(0,0,0,.55);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.profile-img:hover{
+  transform: translateY(-4px) scale(1.01);
+  box-shadow:
+    0 0 0 12px rgba(0,255,136,.10),
+    0 40px 90px rgba(0,0,0,.60);
+}
+
+/* petit effet "float" sur le sous-titre */
+.float{
+  animation: floatY 3.4s ease-in-out infinite;
+}
+@keyframes floatY{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+}
+
+/* fade-in (si tu utilises index.js) */
+.fade-in{
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.fade-in.show{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 992px){
+  .profile-img{
+    width: 260px;
+    height: 260px;
+  }
+}
+/* Animations modernes */
+
+.fade-in{
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all .7s cubic-bezier(.2,.8,.2,1);
+}
+
+.fade-in.show{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Variantes */
+.slide-left{
+  opacity:0;
+  transform: translateX(-40px);
+  transition: all .7s ease;
+}
+.slide-left.show{
+  opacity:1;
+  transform: translateX(0);
+}
+
+.slide-right{
+  opacity:0;
+  transform: translateX(40px);
+  transition: all .7s ease;
+}
+.slide-right.show{
+  opacity:1;
+  transform: translateX(0);
+}
+
+.zoom-in{
+  opacity:0;
+  transform: scale(.9);
+  transition: all .7s ease;
+}
+.zoom-in.show{
+  opacity:1;
+  transform: scale(1);
+}

@@ -2,980 +2,259 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mes Projets Cyber</title>
-  
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  <!-- Animate.css -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --neon-green: #00ff9d;
-      --neon-blue: #00e1ff;
-      --neon-pink: #ff00aa;
-      --neon-purple: #9d00ff;
-      --dark-bg: #0a0a0a;
-      --card-bg: rgba(17, 17, 17, 0.8);
-      --text-color: #e2e8f0;
-      --glow-intensity: 0.8;
-    }
-    
-    body {
-      background-color: var(--dark-bg);
-      color: var(--text-color);
-      font-family: 'Rajdhani', 'Segoe UI', sans-serif;
-      overflow-x: hidden;
-      min-height: 100vh;
-      position: relative;
-      padding-top: 70px; /* Pour la navbar fixe */
-    }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projets | Portfolio - ZOUKENI ISMAIL</title>
 
-    /* Barre de défilement stylisée */
-    ::-webkit-scrollbar {
-      width: 12px;
-      height: 12px;
-    }
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-    ::-webkit-scrollbar-track {
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 10px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(var(--neon-green), var(--neon-blue));
-      border-radius: 10px;
-      border: 2px solid var(--dark-bg);
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(var(--neon-blue), var(--neon-purple));
-    }
-
-    /* Effets de fond */
-    .matrix-grid {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        linear-gradient(rgba(0, 255, 157, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 157, 0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-      pointer-events: none;
-      z-index: -2;
-      animation: gridScroll 20s linear infinite;
-    }
-
-    @keyframes gridScroll {
-      0% { background-position: 0 0; }
-      100% { background-position: 40px 40px; }
-    }
-
-    .scanlines {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        to bottom,
-        rgba(0, 255, 157, 0.03) 1px,
-        transparent 1px
-      );
-      background-size: 100% 4px;
-      pointer-events: none;
-      z-index: -1;
-      animation: scanline 6s linear infinite;
-    }
-
-    @keyframes scanline {
-      0% { background-position: 0 0; }
-      100% { background-position: 0 100%; }
-    }
-
-    .particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .particle {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background-color: var(--neon-green);
-      border-radius: 50%;
-      opacity: 0.6;
-      animation: float 15s infinite linear;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0;
-      }
-      10% {
-        opacity: 0.6;
-      }
-      90% {
-        opacity: 0.6;
-      }
-      100% {
-        transform: translateY(-100vh) translateX(20vw);
-        opacity: 0;
-      }
-    }
-    
-    /* Navigation stylisée */
-    .navbar {
-      background-color: rgba(10, 10, 10, 0.9) !important;
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0, 225, 255, 0.1);
-      transition: all 0.3s ease;
-    }
-
-    .navbar.scrolled {
-      background-color: rgba(0, 0, 0, 0.95) !important;
-      box-shadow: 0 5px 20px rgba(0, 255, 157, 0.1);
-    }
-
-    .navbar-brand {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: var(--neon-green) !important;
-      text-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
-      transition: all 0.3s ease;
-    }
-
-    .navbar-brand:hover {
-      color: var(--neon-blue) !important;
-      text-shadow: 0 0 15px rgba(0, 225, 255, 0.7);
-    }
-
-    .mono-font {
-      font-family: monospace;
-      color: var(--neon-blue);
-    }
-
-    .nav-link {
-      color: var(--text-color) !important;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      margin: 0 0.5rem;
-      position: relative;
-      transition: all 0.3s ease;
-    }
-
-    .nav-link::before {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: var(--neon-green);
-      transition: width 0.3s ease;
-    }
-
-    .nav-link:hover {
-      color: var(--neon-green) !important;
-    }
-
-    .nav-link:hover::before {
-      width: 100%;
-    }
-
-    .nav-link.active {
-      color: var(--neon-blue) !important;
-    }
-
-    .nav-link.active::before {
-      width: 100%;
-      background-color: var(--neon-blue);
-    }
-
-    .navbar-toggler {
-      border-color: rgba(0, 225, 255, 0.3);
-    }
-
-    .navbar-toggler-icon {
-      background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 225, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-    }
-
-    .navbar-toggler:focus {
-      box-shadow: 0 0 0 0.25rem rgba(0, 225, 255, 0.25);
-    }
-    
-    #projets {
-      padding: 6rem 0;
-      position: relative;
-    }
-    
-    /* Titre cyberpunk */
-    h2 {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 700;
-      position: relative;
-      margin-bottom: 4rem;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      text-align: center;
-      font-size: 3rem;
-      background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 10px rgba(0, 225, 255, 0.5);
-      padding-bottom: 1rem;
-    }
-    
-    h2::after {
-      content: '';
-      position: absolute;
-      width: 150px;
-      height: 4px;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
-      box-shadow: 0 0 20px var(--neon-blue);
-      border-radius: 2px;
-    }
-
-    /* Animation des lettres du titre */
-    .title-letter {
-      display: inline-block;
-      transition: all 0.3s ease;
-      text-shadow: 0 0 8px currentColor;
-    }
-
-    h2:hover .title-letter {
-      animation: letterGlow 0.5s ease;
-    }
-
-    @keyframes letterGlow {
-      0%, 100% {
-        transform: translateY(0);
-        text-shadow: 0 0 8px currentColor;
-      }
-      50% {
-        transform: translateY(-10px);
-        text-shadow: 0 0 20px currentColor;
-      }
-    }
-    
-    /* Cartes futuristes */
-    .card {
-      background: var(--card-bg);
-      border: 1px solid rgba(0, 225, 255, 0.1);
-      border-radius: 0;
-      overflow: hidden;
-      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px);
-      opacity: 0;
-      transform: translateY(50px) perspective(1000px) rotateX(15deg);
-      position: relative;
-      z-index: 1;
-      height: 100%;
-    }
-    
-    .card.animate {
-      opacity: 1;
-      transform: translateY(0) perspective(1000px) rotateX(0);
-    }
-    
-    .card:hover {
-      transform: translateY(-15px) perspective(1000px) rotateX(0) !important;
-      box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.4),
-        0 0 30px rgba(0, 255, 157, 0.4);
-      border: 1px solid rgba(0, 225, 255, 0.3);
-    }
-    
-    /* Bordure animée */
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
-      transition: all 0.5s ease;
-      z-index: 2;
-    }
-    
-    .card:hover::before {
-      height: 5px;
-      box-shadow: 0 0 20px var(--neon-green);
-    }
-    
-    .card-body {
-      padding: 2.5rem;
-      position: relative;
-      z-index: 1;
-    }
-    
-    .card-title {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      color: var(--neon-green);
-      transition: all 0.4s ease;
-      position: relative;
-      display: inline-block;
-      letter-spacing: 1px;
-    }
-    
-    .card-title::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--neon-blue);
-      transition: width 0.4s ease;
-    }
-    
-    .card:hover .card-title {
-      color: var(--neon-blue);
-      text-shadow: 0 0 10px rgba(0, 225, 255, 0.5);
-    }
-    
-    .card:hover .card-title::after {
-      width: 100%;
-    }
-    
-    .card-title i {
-      margin-right: 12px;
-      font-size: 1.3em;
-      transition: all 0.4s ease;
-    }
-    
-    .card:hover .card-title i {
-      transform: scale(1.3);
-      color: var(--neon-pink);
-    }
-    
-    .card-text {
-      color: #cbd5e1;
-      line-height: 1.7;
-      transition: all 0.4s ease;
-      font-size: 1.05rem;
-    }
-    
-    .card:hover .card-text {
-      color: #e2e8f0;
-      text-shadow: 0 0 5px rgba(226, 232, 240, 0.3);
-    }
-    
-    /* Animation de fond holographique */
-    .card::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        135deg,
-        rgba(0, 255, 157, 0.05) 0%,
-        rgba(0, 225, 255, 0.05) 50%,
-        rgba(157, 0, 255, 0.05) 100%
-      );
-      z-index: 0;
-      opacity: 0;
-      transition: opacity 0.6s ease;
-    }
-    
-    .card:hover::after {
-      opacity: 1;
-      animation: holographic 8s linear infinite;
-    }
-    
-    @keyframes holographic {
-      0% {
-        background-position: 0% 0%;
-      }
-      100% {
-        background-position: 200% 200%;
-      }
-    }
-    
-    /* Effet de lumière au survol */
-    .hover-light {
-      position: absolute;
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0, 255, 157, 0.15) 0%, transparent 70%);
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: 0;
-    }
-    
-    .card:hover .hover-light {
-      opacity: 1;
-    }
-    
-    /* Effet de vague au clic */
-    .wave {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background-color: rgba(0, 225, 255, 0.3);
-      border-radius: 50%;
-      transform: scale(0);
-      animation: wave 0.8s ease-out;
-      pointer-events: none;
-      z-index: 1;
-    }
-    
-    @keyframes wave {
-      to {
-        transform: scale(30);
-        opacity: 0;
-      }
-    }
-
-    /* Badges techno */
-    .tech-tags {
-      margin-top: 1.5rem;
-    }
-
-    .badge {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 600;
-      letter-spacing: 1px;
-      padding: 0.5rem 0.8rem;
-      border-radius: 0;
-      margin-right: 0.5rem;
-      margin-bottom: 0.5rem;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid transparent;
-    }
-
-    .badge::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: 0.5s;
-    }
-
-    .badge:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 15px currentColor;
-    }
-
-    .badge:hover::before {
-      left: 100%;
-    }
-
-    .bg-primary {
-      background-color: rgba(0, 225, 255, 0.15) !important;
-      color: var(--neon-blue) !important;
-      border-color: var(--neon-blue) !important;
-    }
-
-    .bg-success {
-      background-color: rgba(0, 255, 157, 0.15) !important;
-      color: var(--neon-green) !important;
-      border-color: var(--neon-green) !important;
-    }
-
-    .bg-info {
-      background-color: rgba(157, 0, 255, 0.15) !important;
-      color: var(--neon-purple) !important;
-      border-color: var(--neon-purple) !important;
-    }
-
-    .bg-warning {
-      background-color: rgba(255, 208, 0, 0.15) !important;
-      color: #ffd000 !important;
-      border-color: #ffd000 !important;
-    }
-
-    .bg-secondary {
-      background-color: rgba(255, 255, 255, 0.15) !important;
-      color: white !important;
-      border-color: white !important;
-    }
-
-    .bg-dark {
-      background-color: rgba(255, 0, 170, 0.15) !important;
-      color: var(--neon-pink) !important;
-      border-color: var(--neon-pink) !important;
-    }
-
-    .bg-danger {
-      background-color: rgba(255, 0, 0, 0.15) !important;
-      color: #ff0000 !important;
-      border-color: #ff0000 !important;
-    }
-    
-    /* Footer stylisé */
-    footer {
-      background-color: rgba(10, 10, 10, 0.9);
-      border-top: 1px solid rgba(0, 225, 255, 0.1);
-      padding: 2rem 0;
-      margin-top: 4rem;
-      position: relative;
-    }
-
-    .footer-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .social-link {
-      color: var(--text-color);
-      font-size: 1.5rem;
-      transition: all 0.3s ease;
-    }
-
-    .social-link:hover {
-      color: var(--neon-green);
-      transform: translateY(-5px);
-      text-shadow: 0 0 15px rgba(0, 255, 157, 0.7);
-    }
-
-    .footer-text {
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-
-    .footer-text a {
-      color: var(--neon-blue);
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .footer-text a:hover {
-      color: var(--neon-green);
-      text-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
-    }
-    
-    /* Responsive */
-    @media (max-width: 992px) {
-      h2 {
-        font-size: 2.5rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      h2 {
-        font-size: 2rem;
-        letter-spacing: 2px;
-      }
-      
-      .card-body {
-        padding: 1.8rem;
-      }
-
-      .navbar-collapse {
-        background-color: rgba(10, 10, 10, 0.95);
-        padding: 1rem;
-        border-radius: 0.5rem;
-        margin-top: 0.5rem;
-        border: 1px solid rgba(0, 225, 255, 0.1);
-      }
-
-      .nav-link {
-        margin: 0.5rem 0;
-        padding: 0.5rem 1rem;
-      }
-
-      .nav-link::before {
-        display: none;
-      }
-    }
-
-    @media (max-width: 576px) {
-      h2 {
-        font-size: 1.8rem;
-      }
-      
-      .card-body {
-        padding: 1.5rem;
-      }
-    }
-    
-    /* Styles pour la sélection de texte */
-    ::selection {
-      background: var(--neon-green);
-      color: var(--dark-bg);
-      text-shadow: none;
-    }
-
-    /* Styles pour les liens */
-    a {
-      color: var(--neon-blue);
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: var(--neon-green);
-      text-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
-    }
-
-    /* Styles pour les boutons */
-    .btn-cyber {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      border: 2px solid var(--neon-green);
-      background-color: transparent;
-      color: var(--neon-green);
-      padding: 0.5rem 1.5rem;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-cyber:hover {
-      background-color: rgba(0, 255, 157, 0.1);
-      color: var(--neon-blue);
-      border-color: var(--neon-blue);
-      box-shadow: 0 0 15px rgba(0, 225, 255, 0.5);
-    }
-
-    .btn-cyber::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0, 255, 157, 0.2), transparent);
-      transition: 0.5s;
-    }
-
-    .btn-cyber:hover::before {
-      left: 100%;
-    }
-    
-  </style>
+  <!-- CSS Portfolio -->
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/projet.css" />
 </head>
+
 <body>
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">
-        <span class="mono-font">&lt;</span>ZOUKENI<span class="mono-font">/&gt;</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="index.html">Portfolio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div class="collapse navbar-collapse" id="navbarContent">
+      <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html"><i class="bi bi-house-door-fill me-2"></i>Accueil</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="apropos.html"><i class="bi bi-person-fill me-2"></i>À propos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="projet.html"><i class="bi bi-code-slash me-2"></i>Projets</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="competences.html"><i class="bi bi-tools me-2"></i>Compétences</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html"><i class="bi bi-envelope-fill me-2"></i>Contact</a>
-          </li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="apropos.html">À propos</a></li>
+          <li class="nav-item"><a class="nav-link" href="competences.html">Compétences</a></li>
+          <li class="nav-item"><a class="nav-link active" href="projet.html">Projets</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Effets visuels -->
-  <div class="matrix-grid"></div>
+  <!-- Background effects -->
   <div class="scanlines"></div>
-  <div class="particles" id="particles"></div>
+  <div id="particles"></div>
 
-  <section id="projets" class="py-5">
-    <div class="container">
-      <h2 class="text-center mb-5 animate__animated animate__fadeInDown">
-        <span class="title-letter">M</span>
-        <span class="title-letter">E</span>
-        <span class="title-letter">S</span>
-        <span class="title-letter">&nbsp;</span>
-        <span class="title-letter">P</span>
-        <span class="title-letter">R</span>
-        <span class="title-letter">O</span>
-        <span class="title-letter">J</span>
-        <span class="title-letter">E</span>
-        <span class="title-letter">T</span>
-        <span class="title-letter">S</span>
-        <span class="title-letter">&nbsp;</span>
-        <span class="title-letter">2</span>
-        <span class="title-letter">0</span>
-        <span class="title-letter">2</span>
-        <span class="title-letter">4</span>
-      </h2>
-      <div class="row g-4">
-
-        <!-- Portfolio perso -->
-        <div class="col-md-6 col-lg-4">
-          <div class="card h-100">
-            <div class="hover-light"></div>
-            <div class="card-body">
-              <h5 class="card-title"><i class="fas fa-globe"></i> PORTFOLIO</h5>
-              <p class="card-text">Création d'un portfolio cyberpunk en HTML, CSS et JavaScript avec effets visuels avancés et animations futuristes.</p>
-              <div class="tech-tags">
-                <span class="badge bg-primary me-1">HTML5</span>
-                <span class="badge bg-success me-1">CSS3</span>
-                <span class="badge bg-info">JS</span>
-              </div>
-            </div>
-          </div>
+  <!-- Hero -->
+  <header class="projects-hero">
+    <div class="container content-layer">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <p class="kicker mono-font text-neon mb-2">Mes réalisations</p>
+          <h1 class="title">
+            <span id="typing-text"></span><span class="cursor">_</span>
+          </h1>
+          <p class="lead-text">
+            Une sélection de projets académiques et personnels (Web, Data, Java).
+            Utilise les filtres pour trier rapidement.
+          </p>
         </div>
 
-        <!-- SQL Injection -->
-        <div class="col-md-6 col-lg-4">
-          <div class="card h-100">
-            <div class="hover-light"></div>
-            <div class="card-body">
-              <h5 class="card-title"><i class="fas fa-shield-alt"></i> INJECTION SQL</h5>
-              <p class="card-text">Simulation de failles de sécurité et développement de contre-mesures pour sécuriser les applications web.</p>
-              <div class="tech-tags">
-                <span class="badge bg-dark me-1">CYBERSEC</span>
-                <span class="badge bg-danger">SQL</span>
+        <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+          <a class="btn btn-primary-custom btn-custom" href="contact.html">
+            <i class="bi bi-envelope me-2"></i>Me contacter
+          </a>
+        </div>
+      </div>
+
+      <!-- Page progress -->
+      <div class="page-progress mt-4">
+        <div class="bar" id="page-progress"></div>
+      </div>
+
+      <!-- Filters (Sans DevOps / Cyber) -->
+      <div class="filters mt-4" aria-label="Filtres de projets">
+        <button class="filter-btn active" data-filter="all"><i class="bi bi-grid-3x3-gap me-2"></i>Tout</button>
+        <button class="filter-btn" data-filter="web"><i class="bi bi-globe me-2"></i>Web</button>
+        <button class="filter-btn" data-filter="data"><i class="bi bi-database me-2"></i>Data</button>
+        <button class="filter-btn" data-filter="java"><i class="bi bi-cup-hot me-2"></i>Java</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Projects -->
+  <section class="projects-section">
+    <div class="container content-layer">
+      <div class="row g-4" id="projects-grid">
+
+        <!-- 1) Mini E-commerce Flask -->
+        <div class="col-md-6 col-lg-4 project-col" data-tags="web data">
+          <article class="project-card reveal">
+            <div class="project-top">
+              <div class="project-icon"><i class="bi bi-bag-check"></i></div>
+              <div class="project-meta">
+                <h5 class="project-title">Mini E-commerce (Flask)</h5>
+                <p class="project-desc">Auth, rôles (admin), DB, CRUD produits, structure pro.</p>
               </div>
             </div>
-          </div>
+            <div class="project-tags">
+              <span class="tag">Flask</span><span class="tag">PostgreSQL</span><span class="tag">SQLAlchemy</span><span class="tag">Auth</span>
+            </div>
+            <div class="project-actions">
+              <button class="btn btn-outline-custom btn-custom btn-sm"
+                      data-bs-toggle="modal" data-bs-target="#m-ecommerce">
+                Détails
+              </button>
+              <a class="btn btn-primary-custom btn-custom btn-sm" href="#" target="_blank" rel="noopener">
+                GitHub
+              </a>
+            </div>
+          </article>
         </div>
 
-        <!-- Jump des letters -->
-        <div class="col-md-6 col-lg-4">
-          <div class="card h-100">
-            <div class="hover-light"></div>
-            <div class="card-body">
-              <h5 class="card-title"><i class="fas fa-font"></i> TEXT ANIMATOR</h5>
-              <p class="card-text">Moteur d'animation interactive pour textes avec effets cyberpunk et paramètres personnalisables.</p>
-              <div class="tech-tags">
-                <span class="badge bg-success me-1">ANIMATION</span>
-                <span class="badge bg-info">JS</span>
+        <!-- 2) Chatbot + DB -->
+        <div class="col-md-6 col-lg-4 project-col" data-tags="web data">
+          <article class="project-card reveal">
+            <div class="project-top">
+              <div class="project-icon"><i class="bi bi-chat-dots"></i></div>
+              <div class="project-meta">
+                <h5 class="project-title">Chatbot (DB + fonctionnalités)</h5>
+                <p class="project-desc">Architecture, stockage, endpoints, fonctionnalités.</p>
               </div>
             </div>
-          </div>
+            <div class="project-tags">
+              <span class="tag">Backend</span><span class="tag">DB</span><span class="tag">API</span>
+            </div>
+            <div class="project-actions">
+              <button class="btn btn-outline-custom btn-custom btn-sm" data-bs-toggle="modal" data-bs-target="#m-chatbot">Détails</button>
+              <a class="btn btn-primary-custom btn-custom btn-sm" href="#" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </article>
         </div>
 
-        <!-- Générateur de mot de passe -->
-        <div class="col-md-6 col-lg-4">
-          <div class="card h-100">
-            <div class="hover-light"></div>
-            <div class="card-body">
-              <h5 class="card-title"><i class="fas fa-key"></i> PASSWORD GEN</h5>
-              <p class="card-text">Générateur sécurisé de mots de passe avec options cryptographiques et analyse de robustesse.</p>
-              <div class="tech-tags">
-                <span class="badge bg-info me-1">JS</span>
-                <span class="badge bg-warning text-dark">SECURITY</span>
+        <!-- 3) App Java Desktop cabinet ophtalmologie -->
+        <div class="col-md-6 col-lg-4 project-col" data-tags="java data">
+          <article class="project-card reveal">
+            <div class="project-top">
+              <div class="project-icon"><i class="bi bi-hospital"></i></div>
+              <div class="project-meta">
+                <h5 class="project-title">Cabinet Ophtalmologie (Java Desktop)</h5>
+                <p class="project-desc">Login, gestion patients/rendez-vous, JDBC, CRUD.</p>
               </div>
             </div>
-          </div>
+            <div class="project-tags">
+              <span class="tag">Java</span><span class="tag">JDBC</span><span class="tag">Desktop</span><span class="tag">CRUD</span>
+            </div>
+            <div class="project-actions">
+              <button class="btn btn-outline-custom btn-custom btn-sm" data-bs-toggle="modal" data-bs-target="#m-cabinet">Détails</button>
+              <a class="btn btn-primary-custom btn-custom btn-sm" href="#" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </article>
         </div>
 
-        <!-- To-do list -->
-        <div class="col-md-6 col-lg-4">
-          <div class="card h-100">
-            <div class="hover-light"></div>
-            <div class="card-body">
-              <h5 class="card-title"><i class="fas fa-tasks"></i> CYBER-TODO</h5>
-              <p class="card-text">Application de gestion de tâches avec interface futuriste, synchronisation cloud et rappels intelligents.</p>
-              <div class="tech-tags">
-                <span class="badge bg-info me-1">JS</span>
-                <span class="badge bg-secondary">PRODUCTIVITY</span>
+        <!-- 4) To-Do List -->
+        <div class="col-md-6 col-lg-4 project-col" data-tags="web">
+          <article class="project-card reveal">
+            <div class="project-top">
+              <div class="project-icon"><i class="bi bi-check2-square"></i></div>
+              <div class="project-meta">
+                <h5 class="project-title">To-Do List (Web)</h5>
+                <p class="project-desc">UI moderne, local storage, CRUD tâches, UX simple.</p>
               </div>
             </div>
-          </div>
-        </div>
-
-        <!-- Projets futurs -->
-        <div class="col-md-6 col-lg-4">
-          <div class="card h-100">
-            <div class="hover-light"></div>
-            <div class="card-body">
-              <h5 class="card-title"><i class="fas fa-plus-circle"></i> FUTURE LAB</h5>
-              <p class="card-text">Projets expérimentaux en cours de développement avec IA, réalité augmentée et blockchain.</p>
-              <div class="tech-tags">
-                <span class="badge bg-primary me-1">AI</span>
-                <span class="badge bg-success">INNOVATION</span>
-              </div>
+            <div class="project-tags">
+              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
             </div>
-          </div>
+            <div class="project-actions">
+              <button class="btn btn-outline-custom btn-custom btn-sm" data-bs-toggle="modal" data-bs-target="#m-todo">Détails</button>
+              <a class="btn btn-primary-custom btn-custom btn-sm" href="#" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </article>
         </div>
 
       </div>
     </div>
   </section>
 
- <footer>
-  <div class="container text-center">
-    <div class="social-icons mb-4">
-      <a href="https://github.com/ismailzoukenissas" class="mx-2" title="GitHub"><i class="bi bi-github"></i></a>
-      <a href="https://www.linkedin.com/in/ismail-zoukeni-22b82832a/" class="mx-2" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
-      
-      <a href="https://www.instagram.com/ismailzoukeni/" class="mx-2" title="Instagram"><i class="bi bi-instagram"></i></a>
-    </div>
-    <div>
-      <p class="mb-3">Étudiant en Ingénierie Informatique en AIAC</p>
-      <p class="copyright mb-0">
-        &copy; <span id="current-year"></span> ZOUKENI ISMAIL. Tous droits réservés.
-      </p>
+  <!-- Modals -->
+  <div class="modal fade" id="m-ecommerce" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content modal-glass">
+        <div class="modal-header">
+          <h5 class="modal-title">Mini E-commerce (Flask)</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="modal-list">
+            <li>Authentification + gestion des rôles (admin).</li>
+            <li>Base de données + migrations + modèles (SQLAlchemy).</li>
+            <li>Structure propre : routes, templates, static, config.</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
-</footer>
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-  <script>
-    // Création des particules
-    function createParticles() {
-      const particlesContainer = document.getElementById('particles');
-      const particleCount = 40;
-      
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        
-        // Position aléatoire
-        particle.style.left = Math.random() * 100 + 'vw';
-        particle.style.top = Math.random() * 100 + 'vh';
-        
-        // Taille aléatoire
-        const size = Math.random() * 3 + 1;
-        particle.style.width = size + 'px';
-        particle.style.height = size + 'px';
-        
-        // Délai d'animation aléatoire
-        particle.style.animationDelay = Math.random() * 15 + 's';
-        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-        
-        // Couleur aléatoire (entre vert et bleu néon)
-        const hue = 160 + Math.random() * 60; // Entre 160 et 220
-        particle.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
-        
-        particlesContainer.appendChild(particle);
-      }
-    }
+  <div class="modal fade" id="m-chatbot" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content modal-glass">
+        <div class="modal-header">
+          <h5 class="modal-title">Chatbot (DB + fonctionnalités)</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="modal-list">
+            <li>Stockage : conversations, utilisateurs, historique.</li>
+            <li>Backend : endpoints + logique métier.</li>
+            <li>Architecture claire (services/routes/models).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    // Animation des cartes au scroll
-    function animateCards() {
-      const cards = document.querySelectorAll('.card');
-      const hoverLights = document.querySelectorAll('.hover-light');
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.classList.add('animate');
-            }, 150 * index);
-          }
-        });
-      }, { threshold: 0.1 });
-      
-      cards.forEach(card => {
-        observer.observe(card);
-        
-        // Effet de lumière qui suit la souris
-        card.addEventListener('mousemove', function(e) {
-          const light = this.querySelector('.hover-light');
-          if (light) {
-            const rect = this.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            light.style.left = `${x}px`;
-            light.style.top = `${y}px`;
-          }
-        });
-        
-        // Effet de vague au clic
-        card.addEventListener('click', function(e) {
-          const wave = document.createElement('div');
-          wave.className = 'wave';
-          wave.style.left = `${e.clientX - this.getBoundingClientRect().left}px`;
-          wave.style.top = `${e.clientY - this.getBoundingClientRect().top}px`;
-          this.appendChild(wave);
-          
-          setTimeout(() => {
-            wave.remove();
-          }, 1000);
-        });
-      });
-    }
+  <div class="modal fade" id="m-cabinet" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content modal-glass">
+        <div class="modal-header">
+          <h5 class="modal-title">Cabinet Ophtalmologie (Java Desktop)</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="modal-list">
+            <li>Login + gestion patients / rendez-vous / dossiers.</li>
+            <li>Connexion DB via JDBC, CRUD complet.</li>
+            <li>Organisation du projet : packages, services, DAO.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    // Animation des lettres du titre
-    function animateTitleLetters() {
-      const titleLetters = document.querySelectorAll('.title-letter');
-      titleLetters.forEach((letter, index) => {
-        letter.style.animationDelay = `${index * 0.05}s`;
-        
-        // Effet aléatoire au survol
-        letter.addEventListener('mouseover', function() {
-          this.style.animation = 'letterGlow 0.5s ease';
-          setTimeout(() => {
-            this.style.animation = '';
-          }, 500);
-        });
-      });
-    }
+  <div class="modal fade" id="m-todo" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content modal-glass">
+        <div class="modal-header">
+          <h5 class="modal-title">To-Do List (Web)</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="modal-list">
+            <li>Ajout / suppression / édition de tâches.</li>
+            <li>Stockage local (LocalStorage) + UX simple.</li>
+            <li>Interface responsive.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    // Effet de navbar au scroll
-    function navbarScrollEffect() {
-      const navbar = document.querySelector('.navbar');
-      window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-          navbar.classList.add('scrolled');
-        } else {
-          navbar.classList.remove('scrolled');
-        }
-      });
-    }
+  <footer class="py-4 mt-5">
+    <div class="container text-center">
+      <p class="mb-0">© <span id="current-year"></span> ZOUKENI ISMAIL. Tous droits réservés.</p>
+    </div>
+  </footer>
 
-    // Initialisation
-    document.addEventListener('DOMContentLoaded', function() {
-      createParticles();
-      animateCards();
-      animateTitleLetters();
-      navbarScrollEffect();
-    });
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+  <!-- JS Portfolio -->
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/particles.js" defer></script>
+  <script src="assets/js/projet.js" defer></script>
 </body>
 </html>

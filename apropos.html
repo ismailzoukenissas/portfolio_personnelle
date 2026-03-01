@@ -1,630 +1,176 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio Académique</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <!-- Animate.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-green: #00ff88;
-            --secondary-green: #00cc6a;
-            --dark-green: #006341;
-            --black: #000000;
-            --dark-gray: #121212;
-            --light-gray: #f8f9fa;
-            --neon-glow: 0 0 10px rgba(0, 255, 136, 0.7);
-        }
-        
-        /* Style de navigation mis à jour */
-        .navbar {
-            background-color: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 15px 0;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(0, 255, 136, 0.2);
-        }
-        
-        .navbar.scrolled {
-            padding: 10px 0;
-            background-color: rgba(0, 0, 0, 0.9);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3), var(--neon-glow);
-        }
-        
-        .navbar-brand {
-            font-weight: 700;
-            color: var(--primary-green) !important;
-            font-size: 1.5rem;
-            letter-spacing: 1px;
-            font-family: 'Poppins', sans-serif;
-            text-shadow: var(--neon-glow);
-            transition: all 0.3s ease;
-        }
-        
-        .navbar-brand:hover {
-            text-shadow: 0 0 15px rgba(0, 255, 136, 0.9);
-        }
-        
-        .mono-font {
-            font-family: monospace;
-            color: var(--light-gray);
-        }
-        
-        .nav-link {
-            color: var(--light-gray) !important;
-            margin: 0 15px;
-            font-weight: 500;
-            position: relative;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-        }
-        
-        .nav-link:hover, .nav-link.active {
-            color: var(--primary-green) !important;
-            text-shadow: var(--neon-glow);
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--primary-green);
-            transition: width 0.3s ease;
-            box-shadow: var(--neon-glow);
-        }
-        
-        .nav-link:hover::after, .nav-link.active::after {
-            width: 100%;
-        }
-        
-        .navbar-toggler {
-            border-color: rgba(0, 255, 136, 0.5);
-            transition: all 0.3s ease;
-        }
-        
-        .navbar-toggler:hover {
-            border-color: var(--primary-green);
-            box-shadow: var(--neon-glow);
-        }
-        
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 255, 136, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-            transition: all 0.3s ease;
-        }
-        
-        .navbar-toggler:hover .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 255, 136, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        }
-        
-        /* Le reste du style existant reste inchangé */
-        body {
-            background-color: var(--black);
-            color: var(--light-gray);
-            font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
-            padding-top: 70px;
-        }
-        
-        .full-screen {
-            min-height: 100vh;
-            padding: 100px 0;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .full-screen::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0,255,136,0.05) 0%, rgba(0,0,0,0) 70%);
-            z-index: -1;
-            animation: pulse 15s infinite alternate;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(0.8); opacity: 0.5; }
-            100% { transform: scale(1.2); opacity: 0.8; }
-        }
-        
-        h2 {
-            font-weight: 700;
-            margin-bottom: 70px;
-            position: relative;
-            display: inline-block;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--primary-green);
-            text-shadow: var(--neon-glow);
-        }
-        
-        h2::after {
-            content: '';
-            position: absolute;
-            width: 80%;
-            height: 3px;
-            bottom: -15px;
-            left: 10%;
-            background: linear-gradient(90deg, transparent, var(--primary-green), transparent);
-            animation: lineGrow 1.5s ease-out forwards;
-        }
-        
-        @keyframes lineGrow {
-            from { width: 0; opacity: 0; }
-            to { width: 80%; opacity: 1; }
-        }
-        
-        .timeline {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px 0;
-        }
-        
-        .timeline-line {
-            position: absolute;
-            left: 50px;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(to bottom, 
-                transparent, 
-                var(--primary-green), 
-                var(--secondary-green), 
-                transparent);
-            transform: translateX(-50%);
-            z-index: 1;
-            box-shadow: var(--neon-glow);
-            animation: lineGlow 2s infinite alternate;
-        }
-        
-        @keyframes lineGlow {
-            0% { opacity: 0.7; }
-            100% { opacity: 1; box-shadow: 0 0 20px rgba(0, 255, 136, 0.9); }
-        }
-        
-        .timeline-item {
-            position: relative;
-            padding-left: 100px;
-            margin-bottom: 70px;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        
-        .timeline-item:nth-child(odd) {
-            animation-delay: 0.2s;
-        }
-        
-        .timeline-item:nth-child(even) {
-            animation-delay: 0.4s;
-        }
-        
-        .timeline-item.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .timeline-dot {
-            position: absolute;
-            left: 48px;
-            top: 15px;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: var(--primary-green);
-            z-index: 2;
-            box-shadow: 0 0 0 5px rgba(0, 255, 136, 0.3);
-            transition: all 0.5s ease;
-            animation: dotPulse 2s infinite;
-        }
-        
-        @keyframes dotPulse {
-            0% { box-shadow: 0 0 0 5px rgba(0, 255, 136, 0.3); }
-            50% { box-shadow: 0 0 0 10px rgba(0, 255, 136, 0.1); }
-            100% { box-shadow: 0 0 0 5px rgba(0, 255, 136, 0.3); }
-        }
-        
-        .timeline-item:hover .timeline-dot {
-            transform: scale(1.3);
-            box-shadow: 0 0 0 8px rgba(0, 255, 136, 0.5);
-            animation: none;
-        }
-        
-        .timeline-content {
-            background: rgba(20, 20, 20, 0.8);
-            border-left: 3px solid var(--primary-green);
-            padding: 30px;
-            border-radius: 0 15px 15px 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: all 0.5s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 255, 136, 0.1);
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-        
-        .timeline-item:hover .timeline-content {
-            transform: translateX(15px) rotateY(5deg);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), var(--neon-glow);
-            border-left: 3px solid var(--secondary-green);
-            background: rgba(30, 30, 30, 0.9);
-        }
-        
-        .timeline-content h5 {
-            color: var(--primary-green);
-            font-weight: 600;
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .timeline-content h5::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--primary-green);
-            transition: width 0.5s ease;
-        }
-        
-        .timeline-item:hover .timeline-content h5::after {
-            width: 100%;
-        }
-        
-        .timeline-content p {
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-            position: relative;
-            line-height: 1.6;
-        }
-        
-        .school-name {
-            color: var(--light-gray);
-            display: inline-block;
-            transition: all 0.4s ease;
-            transform-origin: left;
-            cursor: pointer;
-            position: relative;
-            font-weight: 500;
-        }
-        
-        .school-name:hover {
-            color: var(--primary-green);
-            transform: scale(1.05) translateX(10px);
-            text-shadow: var(--neon-glow);
-        }
-        
-        .school-name::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: var(--primary-green);
-            transition: width 0.4s ease;
-        }
-        
-        .school-name:hover::after {
-            width: 100%;
-        }
-        
-        .timeline-content small {
-            display: block;
-            color: #aaa;
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-            font-style: italic;
-        }
-        
-        .icon-container {
-            position: absolute;
-            left: 40px;
-            top: 10px;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--black);
-            background: var(--primary-green);
-            border-radius: 50%;
-            z-index: 3;
-            box-shadow: 0 0 10px rgba(0, 255, 136, 0.7);
-            transition: all 0.5s ease;
-        }
-        
-        .timeline-item:hover .icon-container {
-            transform: rotate(15deg) scale(1.2);
-            background: var(--light-gray);
-            color: var(--primary-green);
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.9);
-        }
-        
-        .badge {
-            transition: all 0.4s ease;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            margin-right: 8px;
-            margin-bottom: 8px;
-            border-radius: 20px;
-            padding: 8px 15px;
-            background-color: rgba(0, 255, 136, 0.1);
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            color: var(--primary-green);
-        }
-        
-        .badge:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
-            background-color: rgba(0, 255, 136, 0.2);
-            border-color: var(--primary-green);
-        }
-        
-        /* Floating particles background */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-        
-        .particle {
-            position: absolute;
-            background-color: rgba(0, 255, 136, 0.5);
-            border-radius: 50%;
-            animation: float linear infinite;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0) translateX(0); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .timeline {
-                padding-left: 50px;
-            }
-            
-            .timeline-line {
-                left: 25px;
-            }
-            
-            .timeline-item {
-                padding-left: 50px;
-            }
-            
-            .timeline-dot, .icon-container {
-                left: 23px;
-            }
-            
-            .timeline-content {
-                padding: 20px;
-            }
-            
-            .navbar {
-                padding: 10px 0;
-            }
-            
-            .nav-link {
-                margin: 5px 0;
-                padding: 10px 15px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>À propos | Portfolio - ZOUKENI ISMAIL</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- CSS Portfolio -->
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/apropos.css">
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <span class="mono-font">&lt;</span>ZOUKENI<span class="mono-font">/&gt;</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html"><i class="fas fa-home me-2"></i>Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="apropos.html"><i class="fas fa-user me-2"></i>À propos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="projet.html"><i class="fas fa-code me-2"></i>Projets</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="competences.html"><i class="fas fa-tools me-2"></i>Compétences</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html"><i class="fas fa-envelope me-2"></i>Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    
-    <!-- Floating particles -->
-    <div class="particles" id="particles"></div>
-    
-    <section id="parcours" class="full-screen">
-        <div class="container">
-            <h2 class="text-center mb-5 animate__animated animate__fadeInDown">Mon Parcours Académique</h2>
-            <div class="timeline position-relative">
-                <div class="timeline-line animate__animated animate__fadeIn"></div>
-
-                <div class="timeline-item">
-                    <div class="icon-container">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h5>Baccalauréat - Sciences de la Vie et de la Terre</h5>
-                        <p><i class="fas fa-map-marker-alt me-2" style="color: var(--primary-green);"></i> <span class="school-name">Lycée Assou Oubaslam</span></p>
-                        <small class="text-muted"><i class="far fa-calendar-alt me-2" style="color: var(--primary-green);"></i> 2022</small>
-                        <div class="mt-4">
-                            
-                            <span class="badge">science de la vie et de la terre </span>
-                            
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="icon-container">
-                        <i class="fas fa-atom"></i>
-                    </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h5>CPGE - Classes Préparatoires aux Grandes Écoles</h5>
-                        <p><i class="fas fa-map-marker-alt me-2" style="color: var(--primary-green);"></i> <span class="school-name">Lycée Prince Moulay El Hassan, Ouarzazate</span></p>
-                        <small class="text-muted"><i class="far fa-calendar-alt me-2" style="color: var(--primary-green);"></i> 2022 - 2024</small>
-                        <div class="mt-4">
-                            <span class="badge">Filière PSI</span>
-                            <span class="badge">Physique-Sciences de l'Ingénieur</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="icon-container">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h5>Cycle d'Ingénieur en Informatique</h5>
-                        <p><i class="fas fa-map-marker-alt me-2" style="color: var(--primary-green);"></i> <span class="school-name">Académie Internationale Mohammed VI de l'Aviation Civile (AIAC)</span></p>
-                        <small class="text-muted"><i class="far fa-calendar-alt me-2" style="color: var(--primary-green);"></i> 2024 - Aujourd'hui</small>
-                        <div class="mt-4">
-                            <span class="badge">Informatique</span>
-                            <span class="badge">Ingénierie Logicielle</span>
-                            <span class="badge">Intelligence Artificielle</span>
-                            <span class="badge">Cybersécurité</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-   <footer>
-  <div class="container text-center">
-    <div class="social-icons mb-4">
-      <a href="https://github.com/ismailzoukenissas" class="mx-2" title="GitHub"><i class="bi bi-github"></i></a>
-      <a href="https://www.linkedin.com/in/ismail-zoukeni-22b82832a/" class="mx-2" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
-      
-      <a href="https://www.instagram.com/ismailzoukeni/" class="mx-2" title="Instagram"><i class="bi bi-instagram"></i></a>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Portfolio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link active" href="apropos.html">À propos</a></li>
+          <li class="nav-item"><a class="nav-link" href="competences.html">Compétences</a></li>
+          <li class="nav-item"><a class="nav-link" href="projet.html">Projets</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
     </div>
-    <div>
-      <p class="mb-3">Étudiant en Ingénierie Informatique en AIAC</p>
-      <p class="copyright mb-0">
-        &copy; <span id="current-year"></span> ZOUKENI ISMAIL. Tous droits réservés.
-      </p>
+  </nav>
+
+  <!-- Background particles -->
+  <div id="particles"></div>
+
+  <!-- Header -->
+  <header class="about-hero">
+    <div class="container content-layer">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <p class="kicker mono-font text-neon mb-2">Mon parcours</p>
+          <h1 class="title">À propos de moi</h1>
+          <p class="lead-text">
+            Voici mon parcours académique, présenté sous forme de timeline interactive.
+            Survole une étape pour voir l’effet, et scrolle pour déclencher les animations.
+          </p>
+        </div>
+        <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+          <a class="btn btn-primary-custom btn-custom" href="contact.html">
+            <i class="bi bi-envelope me-2"></i>Me contacter
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
-</footer>
+  </header>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Animation au scroll pour les éléments de la timeline
-        document.addEventListener('DOMContentLoaded', function() {
-            const timelineItems = document.querySelectorAll('.timeline-item');
-            const schoolNames = document.querySelectorAll('.school-name');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            
-            timelineItems.forEach(item => {
-                observer.observe(item);
-            });
-            
-            // Effet de survol amélioré pour les noms d'écoles
-            schoolNames.forEach(name => {
-                name.addEventListener('mouseenter', function() {
-                    this.style.color = 'var(--primary-green)';
-                    this.style.transform = 'scale(1.05) translateX(10px)';
-                    this.style.textShadow = '0 0 10px rgba(0, 255, 136, 0.7)';
-                });
-                
-                name.addEventListener('mouseleave', function() {
-                    this.style.color = 'var(--light-gray)';
-                    this.style.transform = 'scale(1) translateX(0)';
-                    this.style.textShadow = 'none';
-                });
-            });
-            
-            // Create floating particles
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // Random size between 2px and 6px
-                const size = Math.random() * 4 + 2;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                
-                // Random position
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100 + 100}%`;
-                
-                // Random animation duration between 10s and 30s
-                const duration = Math.random() * 20 + 10;
-                particle.style.animationDuration = `${duration}s`;
-                
-                // Random delay
-                particle.style.animationDelay = `${Math.random() * 5}s`;
-                
-                particlesContainer.appendChild(particle);
-            }
+  <!-- Timeline -->
+  <section id="parcours" class="timeline-section">
+    <div class="container content-layer">
 
-            // Navbar scroll effect
-            window.addEventListener('scroll', function() {
-                const navbar = document.querySelector('.navbar');
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-        });
-    </script>
+      <div class="section-head text-center mb-5">
+        <h2 class="section-title">Mon Parcours Académique</h2>
+        <p class="section-subtitle">3 étapes clés qui m’ont construit.</p>
+      </div>
+
+      <!-- Progress line (interactive) -->
+      <div class="timeline-wrap">
+        <div class="timeline-progress" id="timeline-progress"></div>
+
+        <!-- Item 1 -->
+        <article class="timeline-item reveal">
+          <div class="timeline-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+
+          <div class="timeline-card">
+            <div class="timeline-top">
+              <h5>Baccalauréat — Sciences de la Vie et de la Terre</h5>
+              <span class="timeline-date"><i class="far fa-calendar-alt me-2"></i>2022</span>
+            </div>
+
+            <p class="timeline-place">
+              <i class="fas fa-map-marker-alt me-2"></i>
+              Lycée Assou Oubaslam
+            </p>
+
+            <div class="tags">
+              <span class="tag">SVT</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 2 -->
+        <article class="timeline-item reveal">
+          <div class="timeline-icon">
+            <i class="fas fa-atom"></i>
+          </div>
+
+          <div class="timeline-card">
+            <div class="timeline-top">
+              <h5>CPGE — Classes Préparatoires aux Grandes Écoles</h5>
+              <span class="timeline-date"><i class="far fa-calendar-alt me-2"></i>2022 — 2024</span>
+            </div>
+
+            <p class="timeline-place">
+              <i class="fas fa-map-marker-alt me-2"></i>
+              Lycée Prince Moulay El Hassan, Ouarzazate
+            </p>
+
+            <div class="tags">
+              <span class="tag">PSI</span>
+              <span class="tag">Physique</span>
+              <span class="tag">Sciences de l’Ingénieur</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 3 -->
+        <article class="timeline-item reveal">
+          <div class="timeline-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+
+          <div class="timeline-card">
+            <div class="timeline-top">
+              <h5>Cycle d’Ingénieur — Informatique</h5>
+              <span class="timeline-date"><i class="far fa-calendar-alt me-2"></i>2024 — Aujourd’hui</span>
+            </div>
+
+            <p class="timeline-place">
+              <i class="fas fa-map-marker-alt me-2"></i>
+              AIAC — Académie Internationale Mohammed VI de l'Aviation Civile
+            </p>
+
+            <div class="tags">
+              <span class="tag">Développement</span>
+              <span class="tag">Ingénierie logicielle</span>
+              <span class="tag">IA</span>
+              <span class="tag">Cybersécurité</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-4 mt-5">
+    <div class="container text-center">
+      <p class="mb-0">© <span id="current-year"></span> ZOUKENI ISMAIL. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JS Portfolio -->
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/particles.js" defer></script>
+  <script src="assets/js/apropos.js" defer></script>
+
 </body>
 </html>
